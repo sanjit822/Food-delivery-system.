@@ -1,0 +1,203 @@
+<!-- templates/about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us | FoodieExpress</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      color: #333;
+    }
+    nav {
+      background-color: #28a745;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    header {
+      text-align: center;
+      padding: 40px;
+      background-color: #d4edda;
+    }
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.5em;
+    }
+    .intro {
+      padding: 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      font-size: 1.1em;
+    }
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+    .image-gallery img {
+      width: 28%;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .team-section {
+      padding: 40px;
+      text-align: center;
+      background: #ffffff;
+    }
+    .team-section h2 {
+      margin-bottom: 20px;
+    }
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .member {
+      margin: 15px;
+      width: 200px;
+      padding: 15px;
+      background: #f2f2f2;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .member:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .member img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .timeline {
+      background: #eafaf1;
+      padding: 40px;
+    }
+    .timeline h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .milestone {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-in-out;
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 15px;
+      border-left: 5px solid #28a745;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .milestone.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer {
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    @media (max-width: 768px) {
+      .image-gallery img, .member {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('menu') }}">Menu</a>
+    <a href="{{ url_for('order') }}">Order</a>
+    <a href="{{ url_for('payment') }}">Payment</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>About FoodieExpress</h1>
+    <p>Delivering joy, one meal at a time.</p>
+  </header>
+
+  <!-- Introduction -->
+  <section class="intro">
+    <p>FoodieExpress was founded with one goal in mind — to connect food lovers with their favorite restaurants and cuisines. We’re not just a delivery service — we’re food enthusiasts who understand the joy of a great meal delivered right to your doorstep.</p>
+  </section>
+
+  <!-- Image Gallery -->
+  <section class="image-gallery">
+    <img src="{{ url_for('static', filename='images/food4.png') }}" alt="Our kitchen">
+    <img src="{{ url_for('static', filename='images/food5.png') }}" alt="Delivery in action">
+    <img src="{{ url_for('static', filename='images/food6.png') }}" alt="Happy customer">
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team">
+      <div class="member">
+        <img src="{{ url_for('static', filename='images/founder.png') }}" alt="Founder">
+        <h3>Ravi Kumar</h3>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="member">
+        <img src="{{ url_for('static', filename='images/chef1.png') }}" alt="Chef">
+        <h3>Meera Singh</h3>
+        <p>Head Chef</p>
+      </div>
+      <div class="member">
+        <img src="{{ url_for('static', filename='images/chef.png') }}" alt="Manager">
+        <h3>Mira Verma</h3>
+        <p>Operations Manager</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline">
+    <h2>Our Journey</h2>
+    <div class="milestone">🎯 <strong>2019:</strong> FoodieExpress was founded with 5 restaurants.</div>
+    <div class="milestone">🚀 <strong>2020:</strong> Reached 10,000 orders/month milestone.</div>
+    <div class="milestone">🌍 <strong>2022:</strong> Expanded to 5 major cities.</div>
+    <div class="milestone">🏆 <strong>2024:</strong> Awarded Best Delivery Platform by Food India Awards.</div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 FoodieExpress. Crafted with ❤️ and fresh ideas.
+  </footer>
+
+  <!-- JavaScript: Reveal milestones on scroll -->
+  <script>
+    const milestones = document.querySelectorAll('.milestone');
+    window.addEventListener('scroll', () => {
+      milestones.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
